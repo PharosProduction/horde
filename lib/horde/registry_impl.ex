@@ -272,10 +272,6 @@ defmodule Horde.RegistryImpl do
     {:reply, :ok, state}
   end
 
-  def handle_call(:members, _from, state) do
-    {:reply, {:ok, state.members}, state}
-  end
-
   defp monitor_new_members(members, state) do
     new_member_pids = MapSet.new(members, fn {_node_id, %{own_pid: own_pid}} -> own_pid end)
 
